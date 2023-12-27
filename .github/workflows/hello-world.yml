@@ -1,0 +1,18 @@
+name: hello-world # Name of workflow.
+on: push # When (Events) to trigger the workflow.
+# The push event runs your workflow when you push a commit or tag or when you create a repository from a template.
+
+# Define what happens when the workflow runs by creating a job.
+jobs:
+  # Job name ↓
+  hello-world-job:
+    # A runner is a machine that executes the jobs in a workflow.
+    runs-on: ubuntu-latest
+    # Define what the workflow does.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        # Finally, we’ll add a step to run a bash script that echoes our Hello World! phrase, which we’ve stored in a
+        # file in our actions-learning-pathway repository. The checkout action is doing its job here, giving our bash
+        # script access to the hello-world.txt file to echo its contents.
+      - run: echo "$(cat hello_world.txt)"
